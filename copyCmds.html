@@ -7,7 +7,8 @@ after editing this file, must update index.html for change to show up.</h3>
 <style>
   .zz { resize:none; border:none; font-size: 14px; font-weight: 600;}
 </style>
-<div style="position: -webkit-sticky; position: sticky; top: 10;"><input id="showSelected" type="text" size="80" value="" 
+<div style="position: -webkit-sticky; position: sticky; top: 10;">
+  <input id="showSelected" type="text" size="80" value="" style="color: red; font-size: 18;"
   ></div><br/>
 <div id="div1"></div>
 <!--
@@ -54,7 +55,7 @@ git push git@github.com:txtjqm/springBootDigoc.git
 /
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-ssh root@159.zz.zz.zz '(cat ~/.ssh/id_rsa.pub)' > abc.txt
+ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
 git checkout br2             // switch over to branch
 git branch                   // shows branch I'm on
 git pull
