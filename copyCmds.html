@@ -25,25 +25,44 @@ after editing this file, must update index.html for change to show up.</h3>
 				margin-top:5px; 
 				font: normal 600 11px verdana;' rows="6" 
 			>
+
+:%s/^\s*\d*\s*//    // to remove line number from history
+ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
+ssh -i "myKeyPair2.pem" ubuntu@xx.xx.xx.xx "cd spboot-nginx-reactjs-compose && ./RestartWebA"
+cd spboot && ./gradlew clean build -b build.gradle && cd ..
+/
 sudo docker build -t user3/spboot_a .
 sudo docker run --name spboot_aa -p 80:8080 -d user3/spboot_a
+sudo docker exec -it run3 sh
+sudo docker build -t ng3 .
+sudo docker run --name run3 -p 80:80 -d ng3
 sudo docker images 
+sudo docker image rm nginx_image_a
 sudo docker ps
 sudo docker logs $(sudo docker ps -aq)
 sudo docker stop $(sudo docker ps -aq)
 sudo docker rm $(sudo docker ps -aq)
+sudo docker exec run3 cat /etc/nginx/conf.d/default.conf
+curl localhost:80
+
+/
 sudo docker system prune -a
 sudo docker service create --secret=colors2 --name xyzw 358101a812a0
 java -Dserver.port=80 -jar build/libs/spring-boot-0.0.1-SNAPSHOT.jar
+vi docker-compose.yml
 sudo docker-compose up -d
 sudo docker-compose down
 sudo docker-compose exec webA date
+sudo docker-compose logs webA
+sudo docker-compose restart webA
+/
 sudo docker container ls -a
 sudo docker logs $(sudo docker ps -q --filter="name=web2")
 sudo docker logs $(docker ps -aq --filter="name=sat*")   // [* wildcard]
 sudo docker service ls -q --filter="name=sat"            //  [sat1, sat2 … uses first chars but * wont work]
 sudo docker service rm $( sudo docker service ls -q --filter="name=sat1")
 /
+git clone git@host_rsaNO:txtjqm/spboot-nginx-reactjs-compose.git   // host_rasNO is setup in ~/.ssh/config file
 git fetch
 git diff origin/main
 git remote add origin https://github.com/txtjqm/springBootDigoc.git
@@ -52,10 +71,10 @@ git config --global user.email "zzzz@gmail.com"
 git commit -m "firstcommit"
 git push -u origin master
 git push git@github.com:txtjqm/springBootDigoc.git
+git diff origin/main
 /
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
 git checkout br2             // switch over to branch
 git branch                   // shows branch I'm on
 git pull
@@ -67,9 +86,16 @@ git config --global user.email johndoe@example.com
 git init
 git add .
 git commit -m "first commit"
+git remote set-url origin https://github.com/txtjqm/REACT-nginx-docker-compose.git
 git remote add origin https://github.com/txtjqm/testwednesday.git
 git push -u origin master
-			</textarea>
+/
+sudo  apt-get update && sudo apt install nodejs && sudo apt install npm
+npx create-react-app react_app1     // to create a react app called react_app1
+npm start    // start react dev server  also see npm build to make production
+npm config set strict-ssl=false     // this fixes a problem on the pc
+npm install react-router-dom     // later, to setup react routing:
+</textarea>
 
 <script>
   window.addEventListener('load', (event) => {
