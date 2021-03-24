@@ -1,2 +1,64 @@
-here is index
-2222222222
+
+<h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
+  it is located at https://github.com/txtjqm/txtjqm.github.io <br/>
+after editing this file, must update index.html for change to show up.</h3>
+<style>
+  .zz { resize:none; border:none; font-size: 14px; font-weight: 600;}
+</style>
+<div id="div1"></div>
+<!--
+<textarea id="tx1" rows=1 class="zz" >abcd</textarea>
+<button onclick="myFunction3('tx1')" >Copy</button>
+-->
+<br/><br/>
+<input id="showSelected" type="text" size="60" value="" ><br/>
+
+<script>
+  window.addEventListener('load', (event) => {
+    makeList(); //alert("loaded");
+  });
+  function myFunction3(textAreaID) {
+      var copyText = document.getElementById(textAreaID);
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+      document.getElementById('showSelected').value = copyText.innerHTML;
+  }
+  function makeList() {
+      // Establish the array which acts as a data source for the list
+      let listData = [
+      'sudo docker ps',
+'sudo docker logs $(docker ps -aq)',
+'sudo docker system prune -a',
+'sudo docker images'
+      ]
+      let cmdList = "
+      sudo docker ps
+sudo docker logs $(docker ps -aq)
+sudo docker system prune -a
+sudo docker images
+      ";
+      // Make a container element for the list
+      listContainer = document.createElement('div'),
+      numberOfListItems = listData.length,
+      listItem,
+      i;
+      document.getElementById('div1').appendChild(listContainer);
+      for (i = 0; i < numberOfListItems; ++i) {
+          // create an item for each one
+          listItem = document.createElement('textarea');
+          listItem.setAttribute('rows', '1'); listItem.setAttribute('cols', '60');  listItem.setAttribute('class', 'zz');
+          listItem.innerHTML = listData[i];
+          listItem.setAttribute('id', listData[i]);
+          listContainer.appendChild(listItem);
+          //copylink = document.createElement('button');
+          let fcnCall = 'myFunction3(\'' + listData[i] + '\')';
+          //copylink.setAttribute('onclick', fcnCall);
+          listItem.setAttribute('onclick', fcnCall);
+          //  alert(copylink.getAttribute('onclick'));
+          //listContainer.appendChild(copylink);
+          listContainer.appendChild(document.createElement('br'));
+    }
+}
+</script>
