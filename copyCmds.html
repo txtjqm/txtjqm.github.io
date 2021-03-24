@@ -1,5 +1,5 @@
-
-<script src="jquery-3.6.0.min.js" ></script>
+// script src="jquery-3.6.0.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
   it is located at https://github.com/txtjqm/txtjqm.github.io <br/>
@@ -13,7 +13,7 @@ after editing this file, must update index.html for change to show up.</h3>
 <button onclick="myFunction3('tx1')" >Copy</button>
 -->
 <br/><br/>
-<input id="showSelected" type="text" size="60" value="" ><br/>
+<input id="showSelected" type="text" size="80" value="" ><br/>
 <textarea id='txtListOfItems'
 				style='display:none; width:-webkit-fill-available; /* got from chrome-inspect window */
 				margin-bottom: -4px; /* gap otherwise ?? */
@@ -22,10 +22,51 @@ after editing this file, must update index.html for change to show up.</h3>
 				margin-top:5px; 
 				font: normal 600 11px verdana;' rows="6" 
 			>
-      sudo docker ps
-      sudo docker logs $(docker ps -aq)
-      sudo docker system prune -a
-      sudo docker images jhgjh
+march 24
+sudo docker build -t user3/spboot_a .
+sudo docker run --name spboot_aa -p 80:8080 -d user3/spboot_a
+sudo docker images 
+sudo docker ps
+sudo docker logs $(sudo docker ps -aq)
+sudo docker stop $(sudo docker ps -aq)
+sudo docker rm $(sudo docker ps -aq)
+sudo docker system prune -a
+sudo docker service create --secret=colors2 --name xyzw 358101a812a0
+java -Dserver.port=80 -jar build/libs/spring-boot-0.0.1-SNAPSHOT.jar
+sudo docker-compose up -d
+sudo docker-compose down
+sudo docker-compose exec webA date
+sudo docker container ls -a
+sudo docker logs $(sudo docker ps -q --filter="name=web2")
+sudo docker logs $(docker ps -aq --filter="name=sat*")   // [* wildcard]
+sudo docker service ls -q --filter="name=sat"            //  [sat1, sat2 … uses first chars but * wont work]
+sudo docker service rm $( sudo docker service ls -q --filter="name=sat1")
+/
+git fetch
+git diff origin/main
+git remote add origin https://github.com/txtjqm/springBootDigoc.git
+git remote -v
+git config --global user.email "zzzz@gmail.com"
+git commit -m "firstcommit"
+git push -u origin master
+git push git@github.com:txtjqm/springBootDigoc.git
+/
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+ssh root@159.zz.zz.zz '(cat ~/.ssh/id_rsa.pub)' > abc.txt
+git checkout br2             // switch over to branch
+git branch                   // shows branch I'm on
+git pull
+// In Git, "origin" is a shorthand name for the remote repository 
+//  that a project was originally cloned from
+/
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/txtjqm/testwednesday.git
+git push -u origin master
 			</textarea>
 
 <script>
@@ -52,7 +93,7 @@ after editing this file, must update index.html for change to show up.</h3>
       for (i = 0; i < numberOfListItems; ++i) {
           // create an item for each one
           listItem = document.createElement('textarea');
-          listItem.setAttribute('rows', '1'); listItem.setAttribute('cols', '60');  listItem.setAttribute('class', 'zz');
+          listItem.setAttribute('rows', '1'); listItem.setAttribute('cols', '80');  listItem.setAttribute('class', 'zz');
           listItem.innerHTML = listData[i];
           listItem.setAttribute('id', listData[i]);
           listContainer.appendChild(listItem);
