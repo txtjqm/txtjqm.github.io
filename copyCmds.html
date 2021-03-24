@@ -1,5 +1,4 @@
-// script src="jquery-3.6.0.min.js" ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="jquery-3.6.0.min.js" ></script>
 
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
   it is located at https://github.com/txtjqm/txtjqm.github.io <br/>
@@ -7,13 +6,15 @@ after editing this file, must update index.html for change to show up.</h3>
 <style>
   .zz { resize:none; border:none; font-size: 14px; font-weight: 600;}
 </style>
+<div style="position: -webkit-sticky; position: sticky; top: 10;"><input id="showSelected" type="text" size="80" value="" 
+  ></div><br/>
 <div id="div1"></div>
 <!--
 <textarea id="tx1" rows=1 class="zz" >abcd</textarea>
 <button onclick="myFunction3('tx1')" >Copy</button>
 -->
 <br/><br/>
-<input id="showSelected" type="text" size="80" value="" ><br/>
+
 <textarea id='txtListOfItems'
 				style='display:none; width:-webkit-fill-available; /* got from chrome-inspect window */
 				margin-bottom: -4px; /* gap otherwise ?? */
@@ -22,7 +23,6 @@ after editing this file, must update index.html for change to show up.</h3>
 				margin-top:5px; 
 				font: normal 600 11px verdana;' rows="6" 
 			>
-march 24
 sudo docker build -t user3/spboot_a .
 sudo docker run --name spboot_aa -p 80:8080 -d user3/spboot_a
 sudo docker images 
@@ -73,13 +73,21 @@ git push -u origin master
   window.addEventListener('load', (event) => {
     makeList(); //alert("loaded");
   });
-  function myFunction3(textAreaID) {
-      var copyText = document.getElementById(textAreaID);
-      copyText.select();
-      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  function setClipboard(text) {
+      let data = [new ClipboardItem({ "text/plain": text })];
+      navigator.clipboard.write(data).then(function() {
+        /* success */
+      }, function() {
+        /* failure */
+      });
+  }
+  function myFunction3(textToCopy) {
+      console.log(textToCopy);
+      $('#showSelected').val(textToCopy);
+      $('#showSelected').select();
+      // $('#showSelected').setSelectionRange(0, 99999); /* For mobile devices */
       document.execCommand("copy");
       window.getSelection().removeAllRanges();
-      document.getElementById('showSelected').value = copyText.innerHTML;
   }
   function makeList() {
       // split items by newline and put into an array
@@ -98,7 +106,9 @@ git push -u origin master
           listItem.setAttribute('id', listData[i]);
           listContainer.appendChild(listItem);
           //copylink = document.createElement('button');
-          let fcnCall = 'myFunction3(\'' + listData[i] + '\')';
+          let withoutComment = listData[i].split(/[^:]\/\//)[0];
+          console.log('zz: ' + withoutComment);
+          let fcnCall = 'myFunction3(\'' + withoutComment + '\')'; // trim off the // from what gets copied
           //copylink.setAttribute('onclick', fcnCall);
           listItem.setAttribute('onclick', fcnCall);
           //  alert(copylink.getAttribute('onclick'));
