@@ -1,4 +1,6 @@
 
+<script src="jquery-3.6.0.min.js" ></script>
+
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
   it is located at https://github.com/txtjqm/txtjqm.github.io <br/>
 after editing this file, must update index.html for change to show up.</h3>
@@ -12,6 +14,19 @@ after editing this file, must update index.html for change to show up.</h3>
 -->
 <br/><br/>
 <input id="showSelected" type="text" size="60" value="" ><br/>
+<textarea id='txtListOfItems'
+				style='display:none; width:-webkit-fill-available; /* got from chrome-inspect window */
+				margin-bottom: -4px; /* gap otherwise ?? */
+				padding:5px 10px 5px 10px; 
+				border-width: 0px;
+				margin-top:5px; 
+				font: normal 600 11px verdana;' rows="6" 
+			>
+      sudo docker ps
+      sudo docker logs $(docker ps -aq)
+      sudo docker system prune -a
+      sudo docker images jhgjh
+			</textarea>
 
 <script>
   window.addEventListener('load', (event) => {
@@ -26,31 +41,13 @@ after editing this file, must update index.html for change to show up.</h3>
       document.getElementById('showSelected').value = copyText.innerHTML;
   }
   function makeList() {
-      // Establish the array which acts as a data source for the list
-      let listData = [
-      'sudo docker ps',
-
-'sudo docker logs $(docker ps -aq)',
-
-'sudo docker system prune -a',
-
-'sudo docker images',
-
-
-      ]
-      let listDatazzz = [
-          'Blue',
-          'Red',
-          'White',
-          'Green',
-          'Black',
-          'Orange'
-      ],
+      // split items by newline and put into an array
+      var listData = ($('#txtListOfItems').val()).split(/[\n]+/);
       // Make a container element for the list
-      listContainer = document.createElement('div'),
-      numberOfListItems = listData.length,
-      listItem,
-      i;
+      listContainer = document.createElement('div');
+      numberOfListItems = listData.length;
+      var listItem;
+      var i;
       document.getElementById('div1').appendChild(listContainer);
       for (i = 0; i < numberOfListItems; ++i) {
           // create an item for each one
@@ -68,4 +65,13 @@ after editing this file, must update index.html for change to show up.</h3>
           listContainer.appendChild(document.createElement('br'));
     }
 }
+
+/*
+      let listDataqqq = [
+      'sudo docker ps',
+'sudo docker logs $(docker ps -aq)',
+'sudo docker system prune -a',
+'sudo docker images',
+      ]
+*/
 </script>
