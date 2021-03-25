@@ -38,7 +38,8 @@ sudo docker exec -it run3 sh
 
 
 sudo docker images 
-sudo docker image rm nginx_image_a
+sudo docker image rm ng3        // removes an image
+sudo docker system prune -a     // removes all images including downloaded ones
 sudo docker ps
 sudo docker ps -aq                                  // -q causes only container id to appear
 sudo docker stop 6b52e72f167a                       // from above container id
@@ -51,7 +52,6 @@ sudo docker exec run3 cat /etc/nginx/conf.d/default.conf
 curl localhost:80
 
 /
-sudo docker system prune -a
 sudo docker service create --secret=colors2 --name xyzw 358101a812a0
 java -Dserver.port=80 -jar build/libs/spring-boot-0.0.1-SNAPSHOT.jar
 vi docker-compose.yml
@@ -143,6 +143,7 @@ npm install react-router-dom     // later, to setup react routing:
           listContainer.appendChild(listItem);
           //copylink = document.createElement('button');
           let withoutComment = listData[i].split(/[^:]\/\//)[0];
+	  withoutComment = withoutComment.trim();
           console.log('zz: ' + withoutComment);
           let fcnCall = 'myFunction3(\'' + withoutComment + '\')'; // trim off the // from what gets copied
           //copylink.setAttribute('onclick', fcnCall);
