@@ -43,10 +43,10 @@ sudo docker system prune -a     // removes all images including downloaded ones
 sudo docker ps
 sudo docker ps -aq                                  // -q causes only container id to appear
 sudo docker stop 6b52e72f167a                       // from above container id
-sudo docker ps -aq --filter="name=nginx_container"  // filter by container name
-sudo docker ps -aq --filter="name=nginx_*"          // wildcard
-sudo docker logs $(sudo docker ps -aq --filter="name=nginx_container")   // nested statement
-sudo docker stop $(sudo docker ps -aq --filter="name=nginx_container")
+sudo docker ps -aq --filter=name=nginx_container  // filter by container name
+sudo docker ps -aq --filter=name=nginx_*          // wildcard
+sudo docker logs $(sudo docker ps -aq --filter=name=nginx_container)   // nested statement
+sudo docker stop $(sudo docker ps -aq --filter=name=nginx_container)
 sudo docker rm $(sudo docker ps -aq)                                     // REMOVES ALL CONTAINERS
 sudo docker exec run3 cat /etc/nginx/conf.d/default.conf
 curl localhost:80
