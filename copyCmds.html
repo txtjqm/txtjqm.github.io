@@ -60,7 +60,7 @@ java -Dserver.port=80 -jar build/libs/spring-boot-0.0.1-SNAPSHOT.jar
 vi docker-compose.yml
 sudo docker-compose ps -a                 // shows container name and other stuff but not service name
 sudo docker-compose ps --services         // shows services names running as defined in docker-compose.yml but nothing else
-sudo docker-compose logs nginxA           // shows log of specific service
+
 sudo docker-compose logs $(sudo docker-compose ps --services)   // shows logs of all services
 sudo docker-compose up -d
 sudo docker-compose down
@@ -78,6 +78,7 @@ sudo docker-compose rm nginxA            // removes image for the service as sho
 sudo docker-compose build nginxA         // optional: do this or just bring up docker. Rebuilds the service as shown in docker-compose.yml
 sudo docker-compose up -d                // now start the rebuild image
 curl localhost:80/hello.html    // test it. Caution, use http, not https when testing in browser. AWS links do https !!!
+sudo docker-compose logs nginxA           // shows log of specific service
 /
 sudo docker container ls -a
 /
