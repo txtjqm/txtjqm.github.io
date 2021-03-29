@@ -70,6 +70,8 @@ sudo docker-compose logs webA
 sudo docker-compose restart webA
 sudo docker-compose images
 // how to fix nginx default.conf and apply it to container:
+// this example does it without bringing down docker-compose. It can also be done by bringing down docker-compose and removing image using docker.
+sudo docker-compose stop nginxA          // stop service nginxA without bringing down docker-compose
 sudo docker-compose rm nginxA            // removes image for the service as shown in docker-compose.yml
 sudo docker-compose build nginxA         // rebuilds the service as shown in docker-compose.yml
 sudo docker-compose up -d                // now start the rebuild image
