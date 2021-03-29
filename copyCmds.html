@@ -1,15 +1,15 @@
 <!-- script src="jquery-3.6.0.min.js" >< / script  -->
-march 25 <br/>
+march 29 <br/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
   it is located at https://github.com/txtjqm/txtjqm.github.io <br/>
 after editing this file, must update index.html for change to show up.</h3>
 <style>
-  .zz { resize:none; border:none; font-size: 14px; font-weight: 600;}
+  .itemFont { padding:2px; font-family: 'Verdana'; font-weight: 500; font-size: 14px;  )
 </style>
 <div style="position: -webkit-sticky; position: sticky; top: 10;">
-  <input id="showSelected" type="text" size="80" value="" style="color: red; font-size: 18;"
+  <input id="showSelected" type="text" size="80" value="" style="color: red; font-size: 18px;"
   ></div><br/>
 <div id="div1"></div>
 <!--
@@ -143,21 +143,20 @@ npm install react-router-dom     // later, to setup react routing:
       document.getElementById('div1').appendChild(listContainer);
       for (i = 0; i < numberOfListItems; ++i) {
           // create an item for each one
-          listItem = document.createElement('textarea');
-          listItem.setAttribute('rows', '1'); listItem.setAttribute('cols', '80');  listItem.setAttribute('class', 'zz');
+          //listItem = document.createElement('textarea');
+	  listItem = document.createElement('div');
+          //listItem.setAttribute('rows', '1'); listItem.setAttribute('cols', '80');            	  	  
           listItem.innerHTML = listData[i];
           listItem.setAttribute('id', listData[i]);
+	  listItem.setAttribute('class', 'itemFont'); // must appear AFTER setting content
           listContainer.appendChild(listItem);
           //copylink = document.createElement('button');
           let withoutComment = listData[i].split(/[^:]\/\//)[0];
 	  withoutComment = withoutComment.trim();
           console.log('zz: ' + withoutComment);
           let fcnCall = 'myFunction3(\'' + withoutComment + '\')'; // trim off the // from what gets copied
-          //copylink.setAttribute('onclick', fcnCall);
           listItem.setAttribute('onclick', fcnCall);
-          //  alert(copylink.getAttribute('onclick'));
-          //listContainer.appendChild(copylink);
-          listContainer.appendChild(document.createElement('br'));
+          // listContainer.appendChild(document.createElement('br'));
     }
 }
 
@@ -170,3 +169,4 @@ npm install react-router-dom     // later, to setup react routing:
       ]
 */
 </script>
+
