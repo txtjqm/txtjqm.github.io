@@ -33,10 +33,12 @@ ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
 ssh -i "myKeyPair2.pem" ubuntu@xx.xx.xx.xx "cd spboot-nginx-reactjs-compose && ./RestartWebA"
 cd spboot && ./gradlew clean build -b build.gradle && cd ..
 /
-sudo docker build -t ng3 .          // use current Dockerfile to build image ng3
-sudo docker run --name run3 -p 80:80 -d ng3
+sudo docker build -t react_basic_image -f Dockerfile.react_basic .
+sudo docker build -t reacttrash_image -f Dockerfile.onestep .
+sudo docker run --name runtrash -p 3000:3000 -d reacttrash_image
 sudo docker exec -it run3 sh
-
+sudo docker load < /local/react_basic_image.tar
+sudo docker save  react_basic_image > /local/react_basic_image.tar					       
 
 sudo docker images 
 sudo docker image rm ng3        // removes an image
