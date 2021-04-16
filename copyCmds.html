@@ -35,13 +35,13 @@ cd spboot && ./gradlew clean build -b build.gradle && cd ..
 /
 sudo docker build -t react_basic_image -f Dockerfile.react_basic .
 sudo docker build -t reacttrash_image -f Dockerfile.onestep .
-sudo docker run --name runtrash -p 3000:3000 -d reacttrash_image
+sudo docker run --name trashcontainera -p 3000:3000 -d reacttrash_image
 sudo docker exec -it runtrash sh
 sudo docker load < /local/react_basic_image.tar
 sudo docker save  react_basic_image > /local/react_basic_image.tar					       
 
 sudo docker images 
-sudo docker image rm ng3        // removes an image
+sudo docker image rm -f reacttrash_image        // stops and removes (-f) an image
 sudo docker system prune -a     // removes all images including downloaded ones
 sudo docker ps
 sudo docker ps -aq                                  // -q causes only container id to appear
