@@ -118,6 +118,13 @@ npm start    // start react dev server
 npm run-script build  // creates build folder with an index.html which starts all of reactjs
 npm config set strict-ssl=false     // this fixes a problem on the pc
 npm install react-router-dom     // later, to setup react routing:
+/
+sudo docker build -t reacttrash1-build -f Dockerfile.uses_react_node_modules .
+sudo docker run --name run-reacttrash1 -p 88:3000 -d reacttrash1-build
+sudo docker exec -it run-reacttrash1 sh
+sudo docker logs $(sudo docker ps -aq --filter=name=run-reacttrash1)
+sudo docker rm -f run-reacttrash1
+sudo docker image rm reacttrash1-build
 </textarea>
 
 <script>
