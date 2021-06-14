@@ -33,6 +33,35 @@ ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
 ssh -i "myKeyPair2.pem" ubuntu@xx.xx.xx.xx "cd spboot-nginx-reactjs-compose && ./RestartWebA"
 cd spboot && ./gradlew clean build -b build.gradle && cd ..
 /
+// docker-compose commands. It references containers by the service name as setup in docker-compose.yml
+vi docker-compose.yml
+sudo docker-compose ps -a                 // shows container name and other stuff but not service name
+sudo docker-compose ps --services         // shows services names running as defined in docker-compose.yml but nothing else
+
+sudo docker-compose logs $(sudo docker-compose ps --services)   // shows logs of all services
+sudo docker-compose up -d
+sudo docker-compose down
+// when modifying a dockerfile, run below, then down, then up.
+sudo docker-compose build     
+sudo docker-compose build dbServiceA      // fuilds only that service
+// 
+sudo docker-compose exec webA date        // webA is the name of the service defined in docker-compose.yml
+sudo docker-compose exec nginxA cat /etc/nginx/conf.d/default.conf  // by service name defined in docker-compose.yml
+sudo docker-compose logs webA
+sudo docker-compose restart webA
+sudo docker-compose images
+// how to fix nginx default.conf and apply it to container:
+// this example does it without bringing down docker-compose. It can also be done by bringing down docker-compose and removing image using docker.
+sudo docker-compose stop nginxA          // stop service nginxA without bringing down docker-compose
+// this will still show the image -> sudo docker-compose stop nginxA
+sudo docker-compose rm nginxA            // removes image for the service as shown in docker-compose.yml
+// now this will not show the image -> sudo docker-compose stop nginxA  
+sudo docker-compose build nginxA         // optional: do this or just bring up docker. Rebuilds the service as shown in docker-compose.yml
+sudo docker-compose up -d                // now start the rebuild image
+curl localhost:80/hello.html    // test it. Caution, use http, not https when testing in browser. AWS links do https !!!
+sudo docker-compose logs nginxA           // shows log of specific service
+/
+/
 sudo docker build -t react_basic_image -f Dockerfile.react_basic .
 sudo docker build -t reacttrash_image -f Dockerfile.onestep .
 sudo docker run --name trashcontainera -p 3000:3000 -d reacttrash_image
@@ -58,30 +87,7 @@ curl localhost:80
 sudo docker service create --secret=colors2 --name xyzw 358101a812a0
 java -Dserver.port=80 -jar build/libs/spring-boot-0.0.1-SNAPSHOT.jar
 /
-// docker-compose commands. It references containers by the service name as setup in docker-compose.yml
-vi docker-compose.yml
-sudo docker-compose ps -a                 // shows container name and other stuff but not service name
-sudo docker-compose ps --services         // shows services names running as defined in docker-compose.yml but nothing else
 
-sudo docker-compose logs $(sudo docker-compose ps --services)   // shows logs of all services
-sudo docker-compose up -d
-sudo docker-compose down
-sudo docker-compose exec webA date        // webA is the name of the service defined in docker-compose.yml
-sudo docker-compose exec nginxA cat /etc/nginx/conf.d/default.conf  // by service name defined in docker-compose.yml
-sudo docker-compose logs webA
-sudo docker-compose restart webA
-sudo docker-compose images
-// how to fix nginx default.conf and apply it to container:
-// this example does it without bringing down docker-compose. It can also be done by bringing down docker-compose and removing image using docker.
-sudo docker-compose stop nginxA          // stop service nginxA without bringing down docker-compose
-// this will still show the image -> sudo docker-compose stop nginxA
-sudo docker-compose rm nginxA            // removes image for the service as shown in docker-compose.yml
-// now this will not show the image -> sudo docker-compose stop nginxA  
-sudo docker-compose build nginxA         // optional: do this or just bring up docker. Rebuilds the service as shown in docker-compose.yml
-sudo docker-compose up -d                // now start the rebuild image
-curl localhost:80/hello.html    // test it. Caution, use http, not https when testing in browser. AWS links do https !!!
-sudo docker-compose logs nginxA           // shows log of specific service
-/
 sudo docker container ls -a
 /
 git clone git@host_rsaNO:txtjqm/spboot-nginx-reactjs-compose.git   // host_rasNO is setup in ~/.ssh/config file
