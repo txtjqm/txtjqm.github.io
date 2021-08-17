@@ -1,5 +1,5 @@
 <!-- script src="jquery-3.6.0.min.js" >< / script  -->
-aug<br/>
+aug b<br/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
@@ -34,7 +34,8 @@ cat Scripts/docComposeCmds
 sudo docker-compose -f docker-compose-toplevel.yml -f docker-compose-backend.yml up -d
 sudo docker-compose -f docker-compose-toplevel.yml -f docker-compose-backend.yml down
 Scripts/devToCloud/GitPullRemote.sh
-// run on box with aws command line installed and "aws configure" run using keys gotten from aws console.
+// run on box with aws command line installed and "aws configure" run using keys gotten 
+// from aws console IAM section. See file HOWTO_FILES/AwsStartInstanceFromPcCommandLine for notes.
 aws ec2 start-instances --instance-ids i-094ae34218891fd25
 aws ec2 stop-instances --instance-ids i-094ae34218891fd25
 /	
