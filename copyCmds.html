@@ -1,5 +1,5 @@
 <!-- script src="jquery-3.6.0.min.js" >< / script  -->
-march 29b <br/>
+<br/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <h3>access this file at https://txtjqm.github.io/copyCmds.html <br/>
@@ -29,6 +29,15 @@ after editing this file, must update index.html for change to show up.</h3>
 			>
 
 :%s/^\s*\d*\s*//    // to remove line number from history
+/
+cat Scripts/docComposeCmds
+sudo docker-compose -f docker-compose-toplevel.yml -f docker-compose-backend.yml up -d
+sudo docker-compose -f docker-compose-toplevel.yml -f docker-compose-backend.yml down
+Scripts/devToCloud/GitPullRemote.sh
+// run on box with aws command line installed and "aws configure" run using keys gotten from aws console.
+aws ec2 start-instances --instance-ids i-094ae34218891fd25
+aws ec2 stop-instances --instance-ids i-094ae34218891fd25
+/	
 ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
 ssh -i "myKeyPair2.pem" ubuntu@xx.xx.xx.xx "cd spboot-nginx-reactjs-compose && ./RestartWebA"
 cd spboot && ./gradlew clean build -b build.gradle && cd ..
