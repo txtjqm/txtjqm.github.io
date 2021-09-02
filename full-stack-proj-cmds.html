@@ -38,13 +38,21 @@ Scripts/localScripts/redoFrontEndReactBuildProd.sh
 // one-time script to run command in container to create db test user and tables			 
 Scripts/localScripts/DatabaseCreateTestUserAndTable.sh
 /
-sudo docker stop $(sudo docker ps -aq)
-sudo docker ps
-sudo docker rm -f $(sudo docker ps -aq)
 docker-compose -f docker-compose-backend.yml down
 docker-compose -f docker-compose-frontend.yml down
-docker-compose -f docker-compose-toplevelExtends.yml down		      
+docker-compose -f docker-compose-toplevelExtends.yml down
+// if errors about running containers:
+sudo docker stop $(sudo docker ps -aq)
+sudo docker ps
+sudo docker rm -f $(sudo docker ps -aq)		      
 /
+sudo docker system prune -a
+sudo docker save  react_basic_image > /local/react_basic_image.tar
+sudo docker load < /local/react_basic_image.tar
+sudo docker-compose ps --services
+sudo docker ps -aq --filter=name=nginx_*
+sudo docker stop $(sudo docker ps -aq --filter=name=nginx_container)
+curl localhost:80
 history -s ls
 // aws commands run from pc. setup using ???
 aws ec2 start-instances --instance-ids i-094ae34218891fd25
