@@ -38,7 +38,12 @@ Scripts/localScripts/redoFrontEndReactBuildProd.sh
 // one-time script to run command in container to create db test user and tables			 
 Scripts/localScripts/DatabaseCreateTestUserAndTable.sh
 /
-docker-compose -f docker-compose-toplevelExtends.yml logs webA			      
+sudo docker stop $(sudo docker ps -aq)
+sudo docker ps
+sudo docker rm -f $(sudo docker ps -aq)
+docker-compose -f docker-compose-backend.yml down
+docker-compose -f docker-compose-frontend.yml down
+docker-compose -f docker-compose-toplevelExtends.yml down		      
 /
 history -s ls
 // aws commands run from pc. setup using ???
