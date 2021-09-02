@@ -54,8 +54,10 @@ sudo docker ps -aq --filter=name=nginx_*
 sudo docker stop $(sudo docker ps -aq --filter=name=nginx_container)
 curl localhost:80
 history -s ls
-// aws commands run from pc. setup using ???
+// aws commands run from pc. See document "AwsStartInstanceFromPcCommandLine"
 aws ec2 start-instances --instance-ids i-094ae34218891fd25
+// to get the public IP address..
+aws ec2 describe-instances --instance-ids i-094ae34218891fd25
 aws ec2 stop-instances --instance-ids i-094ae34218891fd25
 /	
 ssh root@159.zz.zz.zz "(cat ~/.ssh/id_rsa.pub)" > abc.txt
