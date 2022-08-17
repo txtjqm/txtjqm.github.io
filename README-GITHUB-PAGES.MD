@@ -22,13 +22,13 @@ It was made this way:
 * git add .; git commit -m "new react project"; git push;
 * browse to.....      https://txtjqm.github.io/TestReactKnobInGrid_url
 
-*** important note: need to make node path relative so above 
-    [non root level] link above will work.
-* in package.json add line "homepage" as below:
-...
+*** important note: need to make node path relative so above   
+    [non root level] link above will work.  
+* in package.json add line "homepage" as below:  
+...  
   "name": "react_app_123",  
   "version": "0.1.0",  
   "zz": "added toallow relative path for modules instead of / for github pages",  
   "homepage": "./",   
-...
+...  
 
