@@ -1,5 +1,8 @@
 
-this github page thing is a react app.
+README.MD for 
+https://github.com/txtjqm/txtjqm.github.io
+
+It hosts the knob react app on github.
 
 see page at:
 https://txtjqm.github.io/TestReactKnobInGrid_url
