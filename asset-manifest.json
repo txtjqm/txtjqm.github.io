@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "./static/css/main.22e4273c.css",
     "main.js": "./static/js/main.2208d97c.js",
     "index.html": "./index.html"
@@ -7,5 +8,14 @@
   "entrypoints": [
     "static/css/main.22e4273c.css",
     "static/js/main.2208d97c.js"
+=======
+    "main.css": "./static/css/main.3a71e7d7.css",
+    "main.js": "./static/js/main.f6843fee.js",
+    "index.html": "./index.html"
+  },
+  "entrypoints": [
+    "static/css/main.3a71e7d7.css",
+    "static/js/main.f6843fee.js"
+>>>>>>> aab5f47a6b2f0342a5c4e34ddeac9b0d0f1060df
   ]
 }
